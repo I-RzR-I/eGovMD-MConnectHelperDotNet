@@ -69,6 +69,10 @@
     <PackageReference Include="System.ServiceModel.Security" Version="4.4.*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Connected Services\" />
+  </ItemGroup>
+
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties BuildVersion_StartDate="2022/10/30" />
