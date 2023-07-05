@@ -16,6 +16,7 @@
 
 // ReSharper disable ClassNeverInstantiated.Global
 
+// ReSharper disable UnusedAutoPropertyAccessor.Global
 namespace MConnectHelperDotNet.Models.DTO.Request.Base
 {
     /// <summary>

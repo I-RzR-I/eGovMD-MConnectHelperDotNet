@@ -18,6 +18,7 @@
 
 using System;
 using System.Net.Http;
+// ReSharper disable UnusedAutoPropertyAccessor.Global
 
 #endregion
 

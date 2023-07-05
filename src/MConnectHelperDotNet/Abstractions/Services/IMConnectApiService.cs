@@ -19,7 +19,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AggregatedGenericResultMessage.Abstractions;
-using MConnectHelperDotNet.Enums;
 using MConnectHelperDotNet.Models.DTO.Request;
 
 #endregion

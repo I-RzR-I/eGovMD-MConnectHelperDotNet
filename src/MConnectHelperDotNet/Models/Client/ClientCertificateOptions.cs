@@ -17,6 +17,7 @@
 #region U S A G E S
 
 using System.Security.Cryptography.X509Certificates;
+// ReSharper disable UnusedAutoPropertyAccessor.Global
 
 #endregion
 
