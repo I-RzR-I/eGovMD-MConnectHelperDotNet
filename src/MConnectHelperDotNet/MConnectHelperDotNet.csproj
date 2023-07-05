@@ -53,9 +53,9 @@
 
   <ItemGroup>
     <PackageReference Include="jose-jwt" Version="3.2.0" />
-    <PackageReference Include="AggregatedGenericResultMessage" Version="1.1.0" />
-    <PackageReference Include="DomainCommonExtensions" Version="1.0.5.1849" />
-    <PackageReference Include="EntityMaxLengthTrim" Version="1.0.3.1800" />
+    <PackageReference Include="AggregatedGenericResultMessage" Version="1.2.0" />
+    <PackageReference Include="DomainCommonExtensions" Version="1.0.7.535" />
+    <PackageReference Include="EntityMaxLengthTrim" Version="1.0.4.1827" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
