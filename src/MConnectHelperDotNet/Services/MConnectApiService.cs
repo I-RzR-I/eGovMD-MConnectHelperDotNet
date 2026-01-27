@@ -44,12 +44,12 @@ namespace MConnectHelperDotNet.Services
         ///     Client factory
         /// </summary>
         private readonly Func<EndpointType, IEndpointClient> _clientFactory;
-        
+
         /// <summary>
         ///     Application logger
         /// </summary>
         private readonly ILogger<MConnectApiService> _logger;
-        
+
         /// <summary>
         ///     Header request builder service
         /// </summary>
@@ -77,7 +77,14 @@ namespace MConnectHelperDotNet.Services
             {
                 var endpointClient = _clientFactory(EndpointType.SOAP11);
                 var requestHeader = await _requestBuilderService.GetHeaderRequestDataAsync(
-                    new GenerateRequestHeaderDto { CallingUserIdentifierCode = request.CallingUserIdentifierCode, RequestEndPointUrl = request.RequestEndPointUrl }, cancellationToken);
+                    new GenerateRequestHeaderDto()
+                    {
+                        CallingEntityName = request.CallingEntityName,
+                        CallBasis = request.CallBasis,
+                        CallReason = request.CallReason,
+                        CallingUserIdentifierCode = request.CallingUserIdentifierCode,
+                        RequestEndPointUrl = request.RequestEndPointUrl
+                    }, cancellationToken);
                 if (!requestHeader.IsSuccess)
                     return Result<string>.Failure(requestHeader.GetFirstMessage());
 
@@ -93,7 +100,12 @@ namespace MConnectHelperDotNet.Services
                 if (!requestApi.IsSuccess)
                     return Result<string>.Failure(requestApi.GetFirstMessage());
 
-                var httpResponse = await endpointClient.SendRequestAsync(new SendRequestDto { TimeOut = request.TimeOut, Request = requestApi.Response }, cancellationToken);
+                var httpResponse = await endpointClient.SendRequestAsync(
+                    new SendRequestDto
+                    {
+                        TimeOut = request.TimeOut,
+                        Request = requestApi.Response
+                    }, cancellationToken);
                 if (!httpResponse.IsSuccess)
                     return Result<string>.Failure(httpResponse.GetFirstMessage());
 

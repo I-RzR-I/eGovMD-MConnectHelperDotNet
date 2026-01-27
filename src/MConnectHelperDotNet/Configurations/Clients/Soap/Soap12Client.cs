@@ -20,6 +20,7 @@ using System.Net.Http;
 using MConnectHelperDotNet.Models.Client;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+
 // ReSharper disable NotAccessedField.Local
 
 #endregion

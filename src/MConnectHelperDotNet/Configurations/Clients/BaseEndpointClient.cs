@@ -55,14 +55,14 @@ namespace MConnectHelperDotNet.Configurations.Clients
         ///     Client certificate option
         /// </summary>
         protected ClientCertificateOptions Options;
-        
+
         /// <summary>
         ///     Base endpoint client
         /// </summary>
         /// <param name="clientFactory">Client factory</param>
         /// <param name="optionsAccessor">Option accessor</param>
         /// <param name="logger">Logger</param>
-        protected BaseEndpointClient(IHttpClientFactory clientFactory, IOptionsMonitor<ClientCertificateOptions> optionsAccessor, 
+        protected BaseEndpointClient(IHttpClientFactory clientFactory, IOptionsMonitor<ClientCertificateOptions> optionsAccessor,
             ILogger<BaseEndpointClient> logger)
         {
             _clientFactory = clientFactory;
@@ -75,7 +75,7 @@ namespace MConnectHelperDotNet.Configurations.Clients
         public abstract IResult<HttpRequestMessage> BuildRequest(RequestSettingDto requestSettings);
 
         /// <inheritdoc />
-        public async Task<IResult<HttpResponseMessage>> SendRequestAsync(SendRequestDto request, 
+        public async Task<IResult<HttpResponseMessage>> SendRequestAsync(SendRequestDto request,
             CancellationToken cancellationToken = default)
         {
             try
@@ -97,14 +97,18 @@ namespace MConnectHelperDotNet.Configurations.Clients
         }
 
         /// <inheritdoc />
-        public async Task<IResult<JToken>> ProcessResponseAsync(ProcessResponseAsyncDto request, 
+        public async Task<IResult<JToken>> ProcessResponseAsync(ProcessResponseAsyncDto request,
             CancellationToken cancellationToken = default)
         {
             try
             {
                 var responseBody = await request.Response.Content.ReadAsStringAsync();
 
-                var processResult = ProcessResponseBody(new ProcessResponseBodyDto {ResponseBody = responseBody, ResponseSetting = request.ResponseSetting});
+                var processResult = ProcessResponseBody(new ProcessResponseBodyDto
+                {
+                    ResponseBody = responseBody, 
+                    ResponseSetting = request.ResponseSetting
+                });
 
                 return processResult;
             }
@@ -134,7 +138,7 @@ namespace MConnectHelperDotNet.Configurations.Clients
             {
                 if (string.IsNullOrWhiteSpace(request.RawHeaders)) return Result.Success();
 
-                foreach (var rawHeader in request.RawHeaders.Split(new[] {Environment.NewLine},
+                foreach (var rawHeader in request.RawHeaders.Split(new[] { Environment.NewLine },
                     StringSplitOptions.RemoveEmptyEntries))
                 {
                     var headerText =

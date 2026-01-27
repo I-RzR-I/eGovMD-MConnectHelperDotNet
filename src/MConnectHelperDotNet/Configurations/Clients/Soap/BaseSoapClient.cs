@@ -82,7 +82,11 @@ namespace MConnectHelperDotNet.Configurations.Clients.Soap
             try
             {
                 var httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, new Uri(requestSettings.Uri.ToString()));
-                FillHeaders(new FillHeadersDto { Headers = httpRequestMessage.Headers, RawHeaders = requestSettings.RequestHeaders });
+                FillHeaders(new FillHeadersDto
+                {
+                    Headers = httpRequestMessage.Headers, 
+                    RawHeaders = requestSettings.RequestHeaders
+                });
 
                 var xml = SoapXmlSignatureHelper.CreateXmlMessage(new CreateXmlMessageDto
                 {
@@ -93,7 +97,11 @@ namespace MConnectHelperDotNet.Configurations.Clients.Soap
                 });
                 httpRequestMessage.Content = new StringContent(xml.Response, Encoding.UTF8, _contentType);
 
-                FillHeaders(new FillHeadersDto { Headers = httpRequestMessage.Content.Headers, RawHeaders = requestSettings.ContentHeaders });
+                FillHeaders(new FillHeadersDto
+                {
+                    Headers = httpRequestMessage.Content.Headers, 
+                    RawHeaders = requestSettings.ContentHeaders
+                });
 
                 return Result<HttpRequestMessage>.Success(httpRequestMessage);
             }
