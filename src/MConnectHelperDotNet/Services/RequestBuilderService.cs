@@ -65,17 +65,15 @@ namespace MConnectHelperDotNet.Services
             try
             {
                 var serviceCertificatePath = _configuration["MConnectOptions:ServiceCertificate:Path"];
-                var callingEntity = _configuration["MConnectOptions:RequestHeaders:CallingEntity"];
-                var callingUser = request.CallingUserIdentifierCode.IsNullOrEmpty() || string.IsNullOrWhiteSpace(request.CallingUserIdentifierCode)
-                    ? _configuration["MConnectOptions:RequestHeaders:CallingUser"]
-                    : request.CallingUserIdentifierCode;
-                var callBasis = _configuration["MConnectOptions:RequestHeaders:CallBasis"];
-                var callReason = _configuration["MConnectOptions:RequestHeaders:CallReason"];
+                var callingEntity = request.CallingEntityName.IfNullOrWhiteSpace(_configuration["MConnectOptions:RequestHeaders:CallingEntity"]);
+                var callingUser = request.CallingUserIdentifierCode.IfNullOrWhiteSpace(_configuration["MConnectOptions:RequestHeaders:CallingUser"]);
+                var callBasis = request.CallBasis.IfNullOrWhiteSpace(_configuration["MConnectOptions:RequestHeaders:CallBasis"]);
+                var callReason = request.CallReason.IfNullOrWhiteSpace(_configuration["MConnectOptions:RequestHeaders:CallReason"]);
 
-                if (string.IsNullOrWhiteSpace(request.RequestEndPointUrl) ||
-                    string.IsNullOrWhiteSpace(serviceCertificatePath) || string.IsNullOrWhiteSpace(callingEntity) ||
-                    string.IsNullOrWhiteSpace(callingUser) || string.IsNullOrWhiteSpace(callBasis) ||
-                    string.IsNullOrWhiteSpace(callReason)
+                if (request.RequestEndPointUrl.IsMissing() ||
+                    serviceCertificatePath.IsMissing() || callingEntity.IsMissing() ||
+                    callingUser.IsMissing() || callBasis.IsMissing() ||
+                    callReason.IsMissing()
                 )
                 {
                     return await Task.FromResult(

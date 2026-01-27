@@ -62,9 +62,19 @@ namespace MConnectHelperDotNet.Configurations.Clients.Rest
         /// <inheritdoc />
         public override IResult<HttpRequestMessage> BuildRequest(RequestSettingDto requestSettings)
         {
-            var httpRequestMessage = new HttpRequestMessage { RequestUri = requestSettings.Uri, Method = requestSettings.Method };
-            var headerFill = FillHeaders(new FillHeadersDto { RawHeaders = requestSettings.RequestHeaders, Headers = httpRequestMessage.Headers });
-            if (!headerFill.IsSuccess) return Result<HttpRequestMessage>.Failure(headerFill.ToBase().GetFirstMessage());
+            var httpRequestMessage = new HttpRequestMessage
+            {
+                RequestUri = requestSettings.Uri, 
+                Method = requestSettings.Method
+            };
+            var headerFill = FillHeaders(new FillHeadersDto
+            {
+                RawHeaders = requestSettings.RequestHeaders, 
+                Headers = httpRequestMessage.Headers
+            });
+
+            if (!headerFill.IsSuccess) 
+                return Result<HttpRequestMessage>.Failure(headerFill.ToBase().GetFirstMessage());
 
             var content = requestSettings.Content;
             if (requestSettings.SignMessage)
@@ -83,7 +93,11 @@ namespace MConnectHelperDotNet.Configurations.Clients.Rest
             }
 
             httpRequestMessage.Content = new StringContent(content, Encoding.UTF8, "application/json");
-            var headerFill2 = FillHeaders(new FillHeadersDto { Headers = httpRequestMessage.Content.Headers, RawHeaders = requestSettings.ContentHeaders });
+            var headerFill2 = FillHeaders(new FillHeadersDto
+            {
+                Headers = httpRequestMessage.Content.Headers,
+                RawHeaders = requestSettings.ContentHeaders
+            });
             
             return !headerFill2.IsSuccess 
                 ? Result<HttpRequestMessage>.Failure(headerFill2.ToBase().GetFirstMessage()) 

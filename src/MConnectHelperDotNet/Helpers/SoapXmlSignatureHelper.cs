@@ -58,22 +58,22 @@ namespace MConnectHelperDotNet.Helpers
 
             // Create Security Header
             var id = Guid.NewGuid().ToString("N");
-            var TimestampNs = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd";
+            var timestampNs = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd";
 
             var security = doc.CreateElement("Security", "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd");
             var msAtt = doc.CreateAttribute("soap", "mustUnderstand", request.SoapNamespace);
             msAtt.InnerText = "1";
             security.Attributes.Append(msAtt);
 
-            var timestamp = doc.CreateElement("Timestamp", TimestampNs);
+            var timestamp = doc.CreateElement("Timestamp", timestampNs);
             timestamp.SetAttribute("Id", "TS-" + id);
             security.AppendChild(timestamp);
 
-            var created = doc.CreateElement("Created", TimestampNs);
+            var created = doc.CreateElement("Created", timestampNs);
             created.InnerText = XmlConvert.ToString(DateTimeOffset.UtcNow);
             timestamp.AppendChild(created);
 
-            var expires = doc.CreateElement("Expires", TimestampNs);
+            var expires = doc.CreateElement("Expires", timestampNs);
             expires.InnerText = XmlConvert.ToString(DateTimeOffset.UtcNow.AddMinutes(15));
             timestamp.AppendChild(expires);
 
@@ -122,7 +122,11 @@ namespace MConnectHelperDotNet.Helpers
 
             var keyInfo = new KeyInfo();
             keyInfo.AddClause(new KeyInfoX509Data(request.Options.ClientCertificate));
-            var signedXml = new SignedXml(request.Document) { KeyInfo = keyInfo, SigningKey = request.Options.ClientCertificate.PrivateKey };
+            var signedXml = new SignedXml(request.Document)
+            {
+                KeyInfo = keyInfo, 
+                SigningKey = request.Options.ClientCertificate.PrivateKey
+            };
 
             signedXml.SignedInfo.CanonicalizationMethod = SignedXml.XmlDsigExcC14NTransformUrl;
             var bodyReference = new Reference { Uri = "#MS-" + request.Id };

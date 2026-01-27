@@ -27,6 +27,30 @@ namespace MConnectHelperDotNet.Models.DTO.Request
         public string CallingUserIdentifierCode { get; set; }
 
         /// <summary>
+        ///     Gets or sets the name of the calling entity.
+        /// </summary>
+        /// <value>
+        ///     The name of the calling entity.
+        /// </value>
+        public string CallingEntityName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the call basis.
+        /// </summary>
+        /// <value>
+        ///     The call basis.
+        /// </value>
+        public string CallBasis { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the call reason.
+        /// </summary>
+        /// <value>
+        ///     The call reason.
+        /// </value>
+        public string CallReason { get; set; }
+
+        /// <summary>
         ///     Request endpoint
         /// </summary>
         public string RequestEndPointUrl { get; set; }
