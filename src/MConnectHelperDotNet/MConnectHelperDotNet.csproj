@@ -55,7 +55,7 @@
     <PackageReference Include="jose-jwt" Version="3.2.0" />
     <PackageReference Include="RzR.ResultMessage" Version="4.0.0" />
     <PackageReference Include="RzR.Extensions.Domain" Version="7.1.0.5494" />
-    <PackageReference Include="RzR.Extensions.EntityLength" Version="3.0.0.7529" />
+    <PackageReference Include="RzR.Extensions.EntityLength" Version="3.0.1.7739" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
