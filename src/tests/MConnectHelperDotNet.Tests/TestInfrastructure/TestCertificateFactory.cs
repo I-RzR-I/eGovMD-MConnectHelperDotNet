@@ -68,18 +68,27 @@ namespace MConnectHelperDotNet.Tests.TestInfrastructure
         }
 
         public string WritePemDirectory(X509Certificate2 certificate)
+            => WritePemDirectory(Array.Empty<string>(), certificate);
+
+        public string WritePemDirectory(IEnumerable<string> leadingLines, params X509Certificate2[] certificates)
         {
             ThrowIfDisposed();
 
             var directory = Path.Combine(DirectoryPath, "pem-" + Guid.NewGuid().ToString("N"));
             Directory.CreateDirectory(directory);
 
-            var base64 = Convert.ToBase64String(certificate.RawData);
             var builder = new StringBuilder();
-            builder.Append(PemBeginCertificate).Append('\n');
-            for (var offset = 0; offset < base64.Length; offset += PemLineLength)
-                builder.Append(base64, offset, Math.Min(PemLineLength, base64.Length - offset)).Append('\n');
-            builder.Append(PemEndCertificate).Append('\n');
+            foreach (var line in leadingLines)
+                builder.Append(line).Append('\n');
+
+            foreach (var certificate in certificates)
+            {
+                var base64 = Convert.ToBase64String(certificate.RawData);
+                builder.Append(PemBeginCertificate).Append('\n');
+                for (var offset = 0; offset < base64.Length; offset += PemLineLength)
+                    builder.Append(base64, offset, Math.Min(PemLineLength, base64.Length - offset)).Append('\n');
+                builder.Append(PemEndCertificate).Append('\n');
+            }
 
             File.WriteAllText(Path.Combine(directory, "tls.crt"), builder.ToString());
 

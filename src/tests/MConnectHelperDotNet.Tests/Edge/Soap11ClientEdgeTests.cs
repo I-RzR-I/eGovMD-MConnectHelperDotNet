@@ -56,7 +56,7 @@ namespace MConnectHelperDotNet.Tests.Edge
         }
 
         [Fact]
-        public void BuildRequest_SignedWithInvalidXmlBody_ReturnsConstantMessageWithoutLeak()
+        public void BuildRequest_SignedWithInvalidXmlBody_ReturnsInvalidXmlMessageWithoutLeak()
         {
             var logger = new SpyLogger<Soap11Client>();
             var sut = CreateSut(logger);
@@ -72,7 +72,8 @@ namespace MConnectHelperDotNet.Tests.Edge
             var result = sut.BuildRequest(settings);
 
             Assert.False(result.IsSuccess);
-            Assert.Equal(DefaultMessages.InternalErrorBuildRequest, result.GetFirstMessage());
+            Assert.Null(result.Response);
+            Assert.Equal(DefaultMessages.InvalidXmlForSoap, result.GetFirstMessage());
             Assert.DoesNotContain(TestValues.Marker, result.GetFirstMessage());
             Assert.Equal(1, logger.ErrorCount);
         }

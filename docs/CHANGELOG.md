@@ -1,3 +1,7 @@
+### **v2.0.1.5787** [[RzR](mailto:108324929+I-RzR-I@users.noreply.github.com)] 08-11-2026
+* [00c6dd3] (RzR) -> Auto commit uncommited files
+* [34ebcac] (RzR) -> Fix SOAP request build error propagation and PEM chain parsing.
+
 ### **v2.0.0.5690** [[RzR](mailto:108324929+I-RzR-I@users.noreply.github.com)] 08-11-2026
 * [8536344] (RzR) -> Auto commit uncommited files
 * [391eab9] (RzR) -> Add new tests.
