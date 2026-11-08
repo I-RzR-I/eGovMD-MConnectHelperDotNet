@@ -19,8 +19,8 @@
 using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
-using DomainCommonExtensions.CommonExtensions;
-using DomainCommonExtensions.DataTypeExtensions;
+using RzR.Extensions.Domain.Primitives;
+using RzR.Extensions.Domain.Text;
 using MConnectHelperDotNet.Extensions;
 
 #endregion

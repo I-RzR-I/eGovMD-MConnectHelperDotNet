@@ -18,10 +18,10 @@
 
 using System;
 using System.Net.Http;
-using AggregatedGenericResultMessage;
-using AggregatedGenericResultMessage.Abstractions;
-using AggregatedGenericResultMessage.Extensions.Result;
-using DomainCommonExtensions.DataTypeExtensions;
+using RzR.ResultMessage;
+using RzR.ResultMessage.Abstractions;
+using RzR.ResultMessage.Extensions.Result;
+using RzR.Extensions.Domain.Text;
 using MConnectHelperDotNet.Helpers;
 using MConnectHelperDotNet.Models.Client;
 using MConnectHelperDotNet.Models.DTO;

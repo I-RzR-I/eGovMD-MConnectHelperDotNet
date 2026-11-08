@@ -18,7 +18,7 @@
 
 using System.Threading;
 using System.Threading.Tasks;
-using AggregatedGenericResultMessage.Abstractions;
+using RzR.ResultMessage.Abstractions;
 using MConnectHelperDotNet.Models.DTO.Request;
 
 #endregion
