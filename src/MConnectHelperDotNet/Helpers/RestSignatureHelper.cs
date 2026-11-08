@@ -18,9 +18,9 @@
 
 using System;
 using System.Security.Cryptography.X509Certificates;
-using AggregatedGenericResultMessage;
-using AggregatedGenericResultMessage.Abstractions;
-using AggregatedGenericResultMessage.Extensions.Result;
+using RzR.ResultMessage;
+using RzR.ResultMessage.Abstractions;
+using RzR.ResultMessage.Extensions.Result;
 using Jose;
 using MConnectHelperDotNet.Models.Client;
 

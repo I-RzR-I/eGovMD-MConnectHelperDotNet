@@ -20,7 +20,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
-using AggregatedGenericResultMessage.Abstractions;
+using RzR.ResultMessage.Abstractions;
 using MConnectHelperDotNet.Models.DTO;
 using MConnectHelperDotNet.Models.DTO.Request.Base;
 using Newtonsoft.Json.Linq;

@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MConnectTest", "tests\MConnectTest\MConnectTest.csproj", "{18386DC7-31F9-44E4-90BB-2C3AD6215883}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MConnectHelperDotNet.Tests", "tests\MConnectHelperDotNet.Tests\MConnectHelperDotNet.Tests.csproj", "{2ABC6577-6D07-487B-BB3D-FD26AA31CE1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,12 +32,17 @@ Global
 		{18386DC7-31F9-44E4-90BB-2C3AD6215883}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18386DC7-31F9-44E4-90BB-2C3AD6215883}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18386DC7-31F9-44E4-90BB-2C3AD6215883}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ABC6577-6D07-487B-BB3D-FD26AA31CE1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ABC6577-6D07-487B-BB3D-FD26AA31CE1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ABC6577-6D07-487B-BB3D-FD26AA31CE1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ABC6577-6D07-487B-BB3D-FD26AA31CE1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{18386DC7-31F9-44E4-90BB-2C3AD6215883} = {E737BE4D-6DFF-4A67-A3D9-2AC58BFBBC07}
+		{2ABC6577-6D07-487B-BB3D-FD26AA31CE1C} = {E737BE4D-6DFF-4A67-A3D9-2AC58BFBBC07}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		BuildVersion_UseUniversalClock = True

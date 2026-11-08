@@ -6,15 +6,7 @@
 
 One important reason for developing this repository is to quickly implement the governmental interoperability service connection provided by [e-governance agency](https://egov.md/), named `MConnect`, available in the Republic of Moldova.<br/>
 
-<p align="center">
-    <a href="https://mconnect.gov.md">
-        <img src="assets/mconnect.png"/>
-    </a>
-</p>
-
-<br/>
-
-Proceed to the service portal where you can read more about them by clicking [here](https://mconnect.gov.md).
+Proceed to the service portal where you can read more about it on [<a href="https://mconnect.gov.md"><img src="assets/mconnect.png" width="100px"/></a>](https://mconnect.gov.md).
 
 The current repository appears as a result of several implementations in projects from scratch, losing a lot of time and desire for a more easy way of implementation in new projects.
 This repository is a wrapper for the currently available service. Using a few configuration parameters from the application settings file `appsettings.json`, you may implement them very easily into your own application.<br/>
