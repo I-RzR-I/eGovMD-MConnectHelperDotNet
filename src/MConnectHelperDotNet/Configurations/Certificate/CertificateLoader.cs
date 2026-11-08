@@ -187,7 +187,7 @@ namespace MConnectHelperDotNet.Configurations.Certificate
                 else if (array[i].Contains("END CERTIFICATE", StringComparison.OrdinalIgnoreCase))
                 {
                     x509Certificate2Collection.Add(
-                        new X509Certificate2(Convert.FromBase64String(string.Concat(array.SubArray(num, i - 1)))));
+                        new X509Certificate2(Convert.FromBase64String(string.Concat(array.SubArray(num, i - num)))));
                     num = -1;
                 }
             }

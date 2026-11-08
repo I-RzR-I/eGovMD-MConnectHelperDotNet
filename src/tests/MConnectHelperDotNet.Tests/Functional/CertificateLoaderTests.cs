@@ -36,6 +36,33 @@ namespace MConnectHelperDotNet.Tests.Functional
         }
 
         [Fact]
+        public void Public_PemDirectoryWithTextBeforeBeginLine_ReturnsCertificateWithSameThumbprint()
+        {
+            var source = _certificates.Create();
+            var directory = _certificates.WritePemDirectory(
+                new[] { "subject=CN=MConnect-Test", "issuer=CN=MConnect-Test" },
+                source);
+
+            using var loaded = CertificateLoader.Public(directory);
+
+            Assert.NotNull(loaded);
+            Assert.Equal(source.Thumbprint, loaded.Thumbprint);
+        }
+
+        [Fact]
+        public void Public_PemDirectoryWithTwoCertificates_ReturnsFirstCertificate()
+        {
+            var first = _certificates.Create("MConnect-First");
+            var second = _certificates.Create("MConnect-Second");
+            var directory = _certificates.WritePemDirectory(Array.Empty<string>(), first, second);
+
+            using var loaded = CertificateLoader.Public(directory);
+
+            Assert.NotNull(loaded);
+            Assert.Equal(first.Thumbprint, loaded.Thumbprint);
+        }
+
+        [Fact]
         public void Private_PasswordProtectedPfx_ReturnsCertificateWithSameThumbprintAndPrivateKey()
         {
             var source = _certificates.Create();

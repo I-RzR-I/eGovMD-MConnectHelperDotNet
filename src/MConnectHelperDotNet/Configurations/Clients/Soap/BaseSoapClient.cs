@@ -95,6 +95,14 @@ namespace MConnectHelperDotNet.Configurations.Clients.Soap
                     Options = Options,
                     RequestBody = requestSettings.Content
                 });
+                if (!xml.IsSuccess)
+                {
+                    var error = xml.ToBase().GetFirstMessage();
+                    _logger.LogError("{Error}", error);
+
+                    return Result<HttpRequestMessage>.Failure(error);
+                }
+
                 httpRequestMessage.Content = new StringContent(xml.Response, Encoding.UTF8, _contentType);
 
                 FillHeaders(new FillHeadersDto
